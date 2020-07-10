@@ -10,6 +10,13 @@ def get_api_key():
 
 
 def get_weather(api_key, location):
+    """
+    This function call the API, take the information about the weather in the city,
+    write it in a file (same name of the city) and return a JSON document
+    :param api_key: API key for the call
+    :param location: City
+    :return: return informations in JSON about the city
+    """
     url = "http://api.openweathermap.org/data/2.5/weather?q={}&appid={}&metric".format(location, api_key)
 
     response = requests.get(url).json()
@@ -17,5 +24,20 @@ def get_weather(api_key, location):
     with open(filename, 'w') as file:
         json.dump(response, file, indent=4)
 
+    return json.dumps(response, indent=4)
 
-get_weather(get_api_key(), "Toulon")
+
+def extract_component(json_file):
+    """
+    
+    :param json_file: JSON file to load the informations
+    :return: Not implemented yet
+    """
+    with open(json_file) as file:
+        data = json.load(file)
+
+    temp = data["main"]["temp"] - 273
+    print("Il fait actuellement {} °C".format(temp))
+
+
+print(get_weather(get_api_key(), "Toulon"))
