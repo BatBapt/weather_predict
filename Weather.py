@@ -11,7 +11,6 @@ class Weather:
         self.api_key = self.get_api_key()
         self.get_weather(self.api_key, location)
 
-
     def get_api_key(self):
         config = configparser.ConfigParser()
         config.read('config.ini')
