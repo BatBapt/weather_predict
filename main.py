@@ -24,12 +24,12 @@ class Application:
         self.info_city = tk.Frame(self.root, width=500, height=500)
         self.info_city.pack()
 
-        self.make_widget()
+        self.make_widget_form()
         self.root.mainloop()
 
         self.entry = None
 
-    def make_widget(self):
+    def make_widget_form(self):
         tk.Label(self.frame_city, text="Ville").pack()
 
         city_name = tk.StringVar()
@@ -38,6 +38,9 @@ class Application:
 
         weather_btn = tk.Button(self.frame_city, text="Chercher la météo dans cette ville", command=self.get_weather)
         weather_btn.pack(padx=10, pady=20)
+
+        quit_btn = tk.Button(self.frame_city, text="Quitter", command=self.root.quit)
+        quit_btn.pack()
 
         self.root.bind_all("<Return>", self.get_weather)
 
