@@ -11,6 +11,9 @@ class Weather:
         self.get_weather(self.api_key, location)
 
     def get_api_key(self):
+        """
+        :return: return the api_key
+        """
         config = configparser.ConfigParser()
         config.read('config.ini')
         return config['openweathermap']['api']
@@ -33,7 +36,7 @@ class Weather:
     def extract_component(self, json_file):
         """
         :param json_file: JSON file to load the informations
-        :return: Not implemented yet
+        :return: differents information about the weather in the city
         """
         with open(json_file) as file:
             data = json.load(file)

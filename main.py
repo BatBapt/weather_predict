@@ -24,10 +24,10 @@ class Application:
         self.info_city = tk.Frame(self.root, width=500, height=500)
         self.info_city.pack()
 
+        self.entry = None
+
         self.make_widget_form()
         self.root.mainloop()
-
-        self.entry = None
 
     def make_widget_form(self):
         tk.Label(self.frame_city, text="Ville").pack()
