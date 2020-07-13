@@ -1,7 +1,13 @@
-import tkinter as tk
-import tkinter.font as tkFont
+try:
+    import tkinter as tk
+    import tkinter.font as tkFont
+    import tkinter.messagebox as messagebox
+    import sys
 
-from Weather import Weather
+    from Weather import Weather
+except ImportError as error:
+    print(error)
+    sys.exit()
 
 
 class Application:
@@ -59,7 +65,7 @@ class Application:
             humidity_label.grid(padx=10, pady=10)
 
         else:
-
+            messagebox.showerror("Erreur", "Le nom de la ville est vide.")
 
 
 if __name__ == "__main__":
